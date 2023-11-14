@@ -19,7 +19,11 @@ async function query(data: any) {
 
   const access_token = logseq.settings!["HuggingFace User Access Token"]
 
-  console.log('access_token: ', access_token);
+  if (!access_token) {
+    console.error("Access token not found. Please enter the user token in the settings.");
+    logseq.UI.showMsg('Access token not found. Please enter the user token in the settings.', 'error')
+    return;
+  }
 
   const response = await fetch(
     "https://api-inference.huggingface.co/models/Norm/nougat-latex-base", 
