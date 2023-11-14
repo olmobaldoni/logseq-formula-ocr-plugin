@@ -1,4 +1,4 @@
-# Logseq - Plugin - LaTex Formula OCR
+# Logseq - LaTex Formula OCR
 
 This plugin is used to convert **LaTex formula images** from the clipboard **into LaTex code** using Transformers.
 
@@ -71,6 +71,8 @@ In Logseq: `Plugins Settings > LaTex Formula OCR > Hugging Face User Access Toke
 
 
 This plugin is based on [nougat-latex-base](https://huggingface.co/Norm/nougat-latex-base), a fine-tuning of [facebook/nougat-base](https://huggingface.co/facebook/nougat-base) with [im2latex-100k](https://zenodo.org/records/56198#.V2px0jXT6eA), and made by [NormXU](https://github.com/NormXU).
+
+In addition, this plugin was also inspired by [xxchan](https://github.com/xxchan) and its plugin [logseq-ocr](https://github.com/xxchan/logseq-ocr)
 
 ---
 

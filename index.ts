@@ -1,8 +1,6 @@
 import "@logseq/libs"
 import { SettingSchemaDesc } from '@logseq/libs/dist/LSPlugin';
 
-//https://huggingface.co/Norm/nougat-latex-base
-
 
 const settingsSchema: SettingSchemaDesc[] = [
     {
@@ -11,7 +9,7 @@ const settingsSchema: SettingSchemaDesc[] = [
         default: "",
         title: "HuggingFace User Access Token",
         description:
-            "https://huggingface.co/docs/hub/security-tokens",
+            " Paste your HuggingFace User Access Token. For more information https://huggingface.co/docs/hub/security-tokens",
     }
 ]
 
@@ -20,6 +18,9 @@ const settingsSchema: SettingSchemaDesc[] = [
 async function query(data: any) {
 
   const access_token = logseq.settings!["HuggingFace User Access Token"]
+
+  console.log('access_token: ', access_token);
+
   const response = await fetch(
     "https://api-inference.huggingface.co/models/Norm/nougat-latex-base", 
     {
@@ -58,7 +59,7 @@ async function formula_ocr() {
 
     const clipboardItem = await navigator.clipboard.read()
     if (!clipboardItem) {
-      console.error('Nessun elemento negli appunti')
+      console.error('Clipboard item is empty')
       return
     }
     console.log('Clipboard item: ', clipboardItem)
