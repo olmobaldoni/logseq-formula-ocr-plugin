@@ -25,10 +25,10 @@ This plugin is used to convert **LaTex formula images** from the clipboard **int
 ## Install
 
 ```console
-git clone ...
-cd ...
-yarn ...
-yarn build ...
+git clone https://github.com/olmobaldoni/logseq-formula-ocr-plugin.git
+cd logseq-formula-ocr-plugin
+yarn 
+yarn build 
 ```
 In Logseq:
 
