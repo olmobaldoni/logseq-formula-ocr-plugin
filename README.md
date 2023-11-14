@@ -9,6 +9,8 @@ This plugin is used to convert **LaTex formula images** from the clipboard **int
 - Technical reports
 - Self-study
 
+(For me it was useful because I hate copying formulas by hand and I hate pasting screenshots of formulas into Logseq😅)
+
 ---
 
 ## Requirements
@@ -51,10 +53,18 @@ In Logseq: `Plugins Settings > LaTex Formula OCR > Hugging Face User Access Toke
 > + The image in the clipboard must be a LaTex formula image
 > + The initial command may be delayed for about 1 minute due to the loading of the model in Hugging Face or when not used for a long time
 > + With the free Hugging Face plan you can make about 30k calls per month (more than enough I would say)
+
 ---
 
 ## Demo
 
+- ### Demo 1
+
+![Demo 1](./demo_1.gif)
+
+- ### Demo 2
+
+![Demo 2](./demo_2.gif)
 ---
 
 ## Acknowledgements

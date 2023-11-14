@@ -1,7 +1,7 @@
 {
   "name": "latex_formula_ocr_plugin",
   "version": "v0.0.1",
-  "description": "A plugin to recognize latex formulas in clipboard images and convert them to latex code",
+  "description": "Read images of LaTex formulas and get the LaTex code",
   "author": "Olmo Baldoni",
   "license": "MIT",
   "main": "dist/index.html",
