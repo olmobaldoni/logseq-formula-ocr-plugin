@@ -18,7 +18,7 @@
     "build": "parcel build --no-source-maps index.html --public-url ./"
   },
   "dependencies": {
-    "@logseq/libs": "0.0.9",
+    "@logseq/libs": "0.0.15",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {

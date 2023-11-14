@@ -66,10 +66,10 @@
   resolved "https://registry.yarnpkg.com/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-2.8.5.tgz#8233e8762440b0f4632c47a09b1b6f23de8b934c"
   integrity sha512-4wvrf5BgnR8RpogHhtpCPJMKBmvyZPhhUtEwMJbXh0ni2BucpfF07jlmyM11zRqQ2XIq6PbC2j7W7UCCcm1rRQ==
 
-"@logseq/libs@0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@logseq/libs/-/libs-0.0.9.tgz#c1313de0ba2e63630bf08fa516fd32f7ef735f69"
-  integrity sha512-cNqjZxJ2+JB/C+BjtQhUMQV2/223cqpx3+WnFS9RFDUUAhNq0jvT8pukqeYyDaPu7vV1lJRWtn76/8f/ThYuYg==
+"@logseq/libs@0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@logseq/libs/-/libs-0.0.15.tgz#03b8b81a0a1557e3f022d68c978ddcb501cd4421"
+  integrity sha512-Z4YrYGfu8Y3s9LTqVnPGkxlO+KZtP1YalH/A63zYgxP61cV5QtKlnHWNcjsKxsD5CkaSL4MlSN4mf7wNx/Fm0A==
   dependencies:
     csstype "3.1.0"
     debug "4.3.4"
