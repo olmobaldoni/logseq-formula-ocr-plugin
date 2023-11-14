@@ -1,13 +1,13 @@
 {
   "name": "latex_formula_ocr_plugin",
   "version": "v0.0.1",
-  "description": "A plugin for Logseq to recognize latex formula in images and convert them to latex code",
+  "description": "A plugin to recognize latex formulas in clipboard images and convert them to latex code",
   "author": "Olmo Baldoni",
   "license": "MIT",
   "main": "dist/index.html",
   "logseq": {
-    "id": "latex_formula_ocr_plugin",
-    "title": "LaTeX Formula OCR Plugin",
+    "id": "logseq-formula-ocr-plugin",
+    "title": "LaTeX Formula OCR",
     "icon": "./icon.svg"
   },
   "targets": {
