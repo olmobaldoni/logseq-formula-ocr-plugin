@@ -65,6 +65,7 @@ In Logseq: `Plugins Settings > LaTex Formula OCR > Hugging Face User Access Toke
 - ### Demo 2
 
 ![Demo 2](./demo_2.gif)
+
 ---
 
 ## Acknowledgements
