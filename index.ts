@@ -28,7 +28,24 @@ async function query(data: any) {
       body: data,
     }
   );
+
   const result = await response.json();
+
+  // If there is an error, wait for the estimated time and retry
+  if (result.error) {
+    console.log('error: ', result.error);
+    console.log('estimated_time: ', result.estimated_time);
+
+    // Convert the estimated_time from seconds to milliseconds
+    const waitTime = result.estimated_time * 1000;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(query(data));
+      }, waitTime);
+    });
+  }
+  
+  // If there is no error, return the result
   console.log('result: ',result);
   console.log('result[0].generated_text: ', result[0].generated_text);
   return result[0].generated_text;
@@ -36,7 +53,7 @@ async function query(data: any) {
 
 async function formula_ocr() {
   try {
-    // necessario avere la finestra in primo piano per accedere agli appunti
+    // Necessary to focus the window before reading the clipboard
     window.focus();
 
     const clipboardItem = await navigator.clipboard.read()
@@ -46,15 +63,14 @@ async function formula_ocr() {
     }
     console.log('Clipboard item: ', clipboardItem)
     const data = await clipboardItem[0].getType('image/png').catch(err => {
-      throw new Error('L\'elemento negli appunti non è un\'immagine')
+      throw new Error('Clipboard item is not an image')
     })
     console.log('Clipboard data: ', data)
 
     const ocrResult = await query(data)
-    // console.log('OCR result: ', ocrResult)
     return ocrResult
   } catch (err) {
-    logseq.UI.showMsg('Lettura immagine appunti fallita: ' + err, 'error')
+    logseq.UI.showMsg('Reading image failed: ' + err, 'error')
   }
 }
 
