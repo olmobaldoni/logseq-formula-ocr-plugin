@@ -1,6 +1,13 @@
 # Logseq - Plugin - LaTex Formula OCR
 
-This plugin is used to convert LaTex formula images from the clipboard into LaTex code using Transformers.
+This plugin is used to convert **LaTex formula images** from the clipboard **into LaTex code** using Transformers.
+
+**Use cases:**
+
+- Preparation of scientific presentations or papers
+- Transcribing lectures
+- Technical reports
+- Self-study
 
 ---
 
