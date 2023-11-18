@@ -23,6 +23,9 @@ jobs:
       - name: Build
         id: build
         run: |
+          npm install -g yarn
+          yarn
+          yarn build
           mkdir ${{ env.PLUGIN_NAME }}
           cp README.md package.json icon.svg LICENSE ${{ env.PLUGIN_NAME }}
           mv dist ${{ env.PLUGIN_NAME }}
