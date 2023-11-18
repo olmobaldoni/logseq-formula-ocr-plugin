@@ -12,10 +12,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
@@ -25,9 +23,8 @@ jobs:
       - name: Build
         id: build
         run: |
-          npm i && npm run build
           mkdir ${{ env.PLUGIN_NAME }}
-          cp -r index.html README.md package.json icon.svg LICENSE demo_1.gif demo_2.gif dist ${{ env.PLUGIN_NAME }}
+          cp README.md package.json icon.svg ${{ env.PLUGIN_NAME }}
           zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
