@@ -12,35 +12,36 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "16.x" # You might need to adjust this value to your own version
+          node-version: "14.x" # You might need to adjust this value to your own version
       - name: Build
         id: build
         run: |
+          npm install -g yarn
+          yarn
+          yarn build
           mkdir ${{ env.PLUGIN_NAME }}
-          cp README.md package.json icon.svg ${{ env.PLUGIN_NAME }}
+          cp README.md package.json icon.svg demo_1.gif demo_2.gif ${{ env.PLUGIN_NAME }}
+          mv dist ${{ env.PLUGIN_NAME }}
           zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
-          
+
       - name: Create Release
-        id: create_release
         uses: ncipollo/release-action@v1
+        id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ github.ref }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          allowUpdates: true
           draft: false
           prerelease: false
-          allowUpdates: true
 
       - name: Upload zip file
         id: upload_zip
