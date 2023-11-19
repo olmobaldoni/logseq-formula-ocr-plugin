@@ -24,6 +24,8 @@ This plugin is used to convert **LaTex formula images** from the clipboard **int
 
 ## Install
 
+**Option 1: manual installation**
+
 ```console
 git clone https://github.com/olmobaldoni/logseq-formula-ocr-plugin.git
 cd logseq-formula-ocr-plugin
@@ -34,6 +36,12 @@ In Logseq:
 
 - Enable developer mode: `Logseq > Settings > Advanced > Developer mode`
 - Import Plugin: `Logseq > Plugins > Load unpacked plugin` and point to the cloned repo.
+
+**Option 2: installation from marketplace**
+
+In Logseq:
+
+- Search for the `LaTex Formula OCR` plugin directly in the marketplace.
 
 ---
 
