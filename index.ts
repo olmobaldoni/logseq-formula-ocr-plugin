@@ -10,12 +10,19 @@ const settingsSchema: SettingSchemaDesc[] = [
         title: "HuggingFace User Access Token",
         description:
             " Paste your HuggingFace User Access Token. For more information https://huggingface.co/docs/hub/security-tokens",
-    }
+    },
+    {
+      key: "Use Local API",
+      type: "boolean",
+      default: false,
+      title: "Use Local API",
+      description: "Toggle to use the local API instead of HuggingFace API"
+  }
 ]
 
 
 
-async function query(data: any) {
+async function query_huggingface(data: any) {
 
   const access_token = logseq.settings!["HuggingFace User Access Token"]
 
@@ -45,7 +52,7 @@ async function query(data: any) {
     const waitTime = result.estimated_time * 1000;
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(query(data));
+        resolve(query_huggingface(data));
       }, waitTime);
     });
   }
@@ -54,6 +61,24 @@ async function query(data: any) {
   console.log('result: ',result);
   console.log('result[0].generated_text: ', result[0].generated_text);
   return result[0].generated_text;
+}
+
+async function query_local(data: any) {
+
+  const formData = new FormData();
+  formData.append("file", data);
+
+  const response = await fetch(
+    "http://localhost/upload_latex_image/", 
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  const result = await response.text();
+
+  return result;
 }
 
 async function formula_ocr() {
@@ -70,9 +95,11 @@ async function formula_ocr() {
     const data = await clipboardItem[0].getType('image/png').catch(err => {
       throw new Error('Clipboard item is not an image')
     })
+
     console.log('Clipboard data: ', data)
 
-    const ocrResult = await query(data)
+    const useLocalAPI = logseq.settings!["Use Local API"]
+    const ocrResult = useLocalAPI ? await query_local(data) : await query_huggingface(data)
     return ocrResult
   } catch (err) {
     logseq.UI.showMsg('Reading image failed: ' + err, 'error')
