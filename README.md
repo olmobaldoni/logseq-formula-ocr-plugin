@@ -81,5 +81,3 @@ In addition, this plugin was also inspired by [xxchan](https://github.com/xxchan
 ## License
 
 MIT
-
-For detailed instructions and troubleshooting, visit the [GitHub repository](https://github.com/olmobaldoni/logseq-formula-ocr-plugin).
