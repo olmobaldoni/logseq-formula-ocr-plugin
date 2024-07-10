@@ -64,21 +64,29 @@ async function query_huggingface(data: any) {
 }
 
 async function query_local(data: any) {
-
   const formData = new FormData();
   formData.append("file", data);
 
-  const response = await fetch(
-    "http://localhost/upload_latex_image/", 
-    {
-      method: "POST",
-      body: formData,
+  try {
+    const response = await fetch(
+      "http://localhost/upload_latex_image/", 
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`API returned status code ${response.status}`);
     }
-  );
 
-  const result = await response.text();
+    const result = await response.text();
+    return result;
 
-  return result;
+  } catch (error) {
+    console.error("Local API request failed: ", error);
+    logseq.UI.showMsg('Local API request failed: ' + error.message, 'error');
+  }
 }
 
 async function formula_ocr() {
@@ -118,6 +126,14 @@ async function main() {
             await logseq.Editor.insertAtEditingCursor(latexText)
         },
         )
+    logseq.Editor.registerSlashCommand(
+        'inline-formula-ocr', 
+        async () => {
+            const text = await formula_ocr()
+            const latexText = `$${text}$`;
+            await logseq.Editor.insertAtEditingCursor(latexText)
+        },
+        )      
     console.log('Formula OCR plugin loaded')
 }
 
