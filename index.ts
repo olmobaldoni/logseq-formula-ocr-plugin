@@ -119,7 +119,7 @@ async function main() {
     logseq.useSettingsSchema(settingsSchema);
     
     logseq.Editor.registerSlashCommand(
-        'formula-ocr', 
+        'display-formula-ocr', 
         async () => {
             const text = await formula_ocr()
             const latexText = `$$${text}$$`;
