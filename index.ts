@@ -126,6 +126,7 @@ async function main() {
             await logseq.Editor.insertAtEditingCursor(latexText)
         },
         )
+    
     logseq.Editor.registerSlashCommand(
         'inline-formula-ocr', 
         async () => {
@@ -133,7 +134,8 @@ async function main() {
             const latexText = `$${text}$`;
             await logseq.Editor.insertAtEditingCursor(latexText)
         },
-        )      
+        )  
+        
     console.log('Formula OCR plugin loaded')
 }
 
